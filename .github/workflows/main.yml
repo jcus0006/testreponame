@@ -33,12 +33,12 @@ jobs:
       # Runs a single command using the runners shell
       - name: Docker Login
         run: |
-          docker login -u ${{env.DOCKERHUBUSERNAME}} -p ${{env.DOCKERHUBPASSWORD}}
+          docker login -u ${{env.DOCKER_USER}} -p ${{env.DOCKER_PASSWORD}}
 
       # Build docker image
       - name: Build docker image
-        run: docker build -f hello-world/Dockerfile . --tag ${{env.DOCKERHUBUSERNAME}}/testreponame:${{env.APP_VERSION}}
+        run: docker build -f hello-world/Dockerfile . --tag ${{env.DOCKER_USER}}/testreponame:${{env.APP_VERSION}}
 
       # Push Docker image to repository
       - name: Push Docker image
-        run: docker push ${{env.DOCKERHUBUSERNAME}}/testreponame:${{env.APP_VERSION}}
+        run: docker push ${{env.DOCKER_USER}}/testreponame:${{env.APP_VERSION}}
